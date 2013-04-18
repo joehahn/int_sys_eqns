@@ -1,4 +1,4 @@
-These IDL routines performs a Runga Kutta integration of a system of equations
+These IDL routines perform a Runga Kutta integration of a system of equations
 to advance the vector y(x)=[y0(x), y1(x), y2(x),...], where the yi[x] are the
 individual solutions that are sampled at various times x. The inputs
 are x (which is a 1D vector where the yi(x) are to be sampled), the boundary conditions
