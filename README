@@ -1,0 +1,26 @@
+These IDL routines performs a Runga Kutta integration of a system of equations
+to advance the vector y(x)=[y0(x), y1(x), y2(x),...], where the yi[x] are the
+individual solutions that are sample at various times x. The inputs
+are x (which is a 1D vector where the yi(x) are to be sampled), the boundary conditions
+y0 (which is a 1D vector that are the initial yi(x[0]) values), the allowed
+fractional error, the suggested initial timestep dx_try, the minimum timestep dx_min,
+pro_name=string that provides the name of the proceedure that calculates the 
+derivative dyi/dx (a 1D vector), and the 2D output array y[j,k], where j
+indicates the quantity yj which is evaluated at x[k]. Additional parameters
+are passed on to pro_name via the params structure. Set optional
+quiet=1 to avoid printing the code's %progress. These procedures are adapted from 
+Numerical Recipes in C, second edition, by Press et al (1992).
+
+The file odeint.pro contains the IDL procedures odeint, rkqs, and rkck, which are 
+called by int_sys_eqns.pro.
+
+odeint_derivs.pro is the user-supplied IDL procedure that calculates the derivatives dy/dx.
+
+int_sys_eqns.pro calls the above procedures to obtain a Runga Kutta integration that
+advances the vector  y(x)=[y0(x), y1(x), y2(x),...] to the user-specified distances
+(or times) x=[x0, x1, x2, ...].
+
+test_int_sys_eqns.pro demonstrates how int_sys_eqns.pro is used. Start IDL then
+enter @test_int_sys_eqns
+
+
